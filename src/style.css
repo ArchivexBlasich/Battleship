@@ -3,7 +3,9 @@
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -22,26 +24,212 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
+}
+
+/*--------- page style ----------*/
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  min-height: 70%;
+  min-width: 70%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+main button {
+  background: none;
+}
+
+#human-player,
+#computer-player {
+  height: 45vh;
+  width: 45vh;
+
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+#human-player button,
+#computer-player button {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#human-player button[data-row="0"],
+#computer-player button[data-row="0"] {
+  border-top: 4px solid black;
+}
+
+#human-player button[data-column="0"],
+#computer-player button[data-column="0"] {
+  border-left: 4px solid black;
+}
+
+#human-player button[data-row="9"],
+#computer-player button[data-row="9"] {
+  border-bottom: 4px solid black;
+}
+
+#human-player button[data-column="9"],
+#computer-player button[data-column="9"] {
+  border-right: 4px solid black;
+}
+
+#human-player > button:nth-child(1),
+#computer-player button:nth-child(1) {
+  border-top-left-radius: 0.8rem;
+}
+
+#human-player > button:nth-child(10),
+#computer-player button:nth-child(10) {
+  border-top-right-radius: 0.8rem;
+}
+
+#human-player > button:nth-child(91),
+#computer-player button:nth-child(91) {
+  border-bottom-left-radius: 0.8rem;
+}
+
+#human-player > button:nth-child(100),
+#computer-player button:nth-child(100) {
+  border-bottom-right-radius: 0.8rem;
+}
+
+main button:hover,
+main button:hover {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+#human-player button.ship {
+  background-color: blue;
+}
+
+#human-player button.ship.hit  {
+  background-color: lightcoral;
+}
+
+
+button.ship:hover {
+  background-color: none;
+}
+
+button.hit {
+  color: red;
+  font-size: 100%;
+  font-weight: 900;
+}
+
+button.ship.hit {
+  background-color: lightcoral;
+}
+
+#fleet {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#fleet > div{
+  background-color: crimson;
+  display: flex;
+}
+
+#fleet > div > div{
+  border: 2px solid coral;
+  flex-grow: 1;
+}
+
+#carrier {
+  min-height: 2rem;
+  min-width: 11vw;
+}
+
+#battleship {
+  min-height: 2rem;
+  min-width: 9vw;
+}
+
+#cruiser,
+#submarine {
+  height: 2rem;
+  width: 7vw;
+}
+
+#destroyer {
+  height: 2rem;
+  width: 5vw;
+}
+
+#human-player .preview {
+  background-color: green;
+}
+
+#human-player .invalid {
+  background-color: red;
+}
+
+.winner {
+  margin-top: 5rem;
+  padding: 2rem;
+  border: 2px solid green;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
 }
